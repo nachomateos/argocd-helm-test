@@ -1,0 +1,9 @@
+apiVersion: v2
+description: helm chart to install keycloak
+name: auth
+version: 0.1.1
+
+dependencies:
+  - name: keycloak
+    version: 12.1.2
+    repository: https://charts.bitnami.com/bitnami
