@@ -1,4 +1,5 @@
 keycloak:
+  replicaCount: 2
   httpRelativePath: /auth/
   production: false
   auth:
