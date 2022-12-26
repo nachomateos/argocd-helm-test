@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: redis
+  namespace: redis
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  project: default
+  source:
+    chart: redis
+    helm:
+      values: |
+        auth:
+          password: "JAt76aMJQwQ5Uy6c"
+        architecture: standalone
+        master:
+          persistence:
+            enabled: false
+    repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: 17.3.4
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
